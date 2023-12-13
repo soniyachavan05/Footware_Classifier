@@ -8,7 +8,7 @@ function predict() {
 
         $.ajax({
             type: 'POST',
-            url: 'predict', // Specify the endpoint for prediction
+            url: 'https://soniyachavan05.github.io/Footware_Classifier/', // Specify the endpoint for prediction
             data: formData,
             contentType: false,
             processData: false,
