@@ -12,13 +12,13 @@ async function classifyImage() {
     formData.append('file', file);
 
     try {
-        const response = await fetch('<your_model_api_url>', {
+        const response = await fetch('<https://soniyachavan05.github.io/Footware_Classifier>', {
             method: 'POST',
             body: formData,
         });
 
         const result = await response.json();
-        resultDiv.innerHTML = `<p>Prediction: ${result.prediction}</p>`;
+        resultDiv.innerHTML = `<p>Prediction: ${result.prediction}</p>`
     } catch (error) {
         console.error('Error:', error);
         resultDiv.innerHTML = '<p>Error occurred. Please try again.</p>';
