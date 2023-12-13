@@ -8,12 +8,12 @@ function predict() {
 
         $.ajax({
             type: 'POST',
-            url: 'https://soniyachavan05.github.io/Footware_Classifier/', // Specify the endpoint for prediction
+            url: 'predict',
             data: formData,
             contentType: false,
             processData: false,
             success: function(response) {
-                resultDiv.innerText = `Prediction: ${response}`;
+                resultDiv.innerText = `Prediction: ${response.prediction}`;
             },
             error: function() {
                 resultDiv.innerText = 'Error predicting image.';
