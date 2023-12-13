@@ -12,7 +12,7 @@ async function classifyImage() {
     formData.append('file', file);
 
     try {
-        const response = await fetch('<https://soniyachavan05.github.io/Footware_Classifier>', {
+        const response = await fetch('<https://soniyachavan05.github.io/Footware_Classifier/>', {
             method: 'POST',
             body: formData,
         });
