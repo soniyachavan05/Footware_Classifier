@@ -16,7 +16,12 @@ function predict() {
             contentType: false,
             processData: false,
             success: function(response) {
-                resultDiv.innerText = `Prediction: ${response.prediction}`;
+                // Check if 'prediction' is defined in the response
+                if ('prediction' in response) {
+                    resultDiv.innerText = `Prediction: ${response.prediction}`;
+                } else {
+                    resultDiv.innerText = 'Prediction not available';
+                }
             },
             error: function() {
                 resultDiv.innerText = 'Error predicting image.';
