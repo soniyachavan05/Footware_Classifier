@@ -1,28 +1,25 @@
-async function classifyImage() {
+function predict() {
     const fileInput = document.getElementById('fileInput');
     const resultDiv = document.getElementById('result');
 
-    const file = fileInput.files[0];
-    if (!file) {
-        alert('Please select an image.');
-        return;
-    }
+    if (fileInput.files.length > 0) {
+        const formData = new FormData();
+        formData.append('file', fileInput.files[0]);
 
-    const formData = new FormData();
-    formData.append('file', file);
-
-    let session = await ort.InferenceSession.create('model.onnx');
-
-    try {
-        const response = await fetch('<https://soniyachavan05.github.io/Footware_Classifier/>', {
-            method: 'POST',
-            body: formData,
+        $.ajax({
+            type: 'POST',
+            url: 'predict', // Specify the endpoint for prediction
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                resultDiv.innerText = `Prediction: ${response}`;
+            },
+            error: function() {
+                resultDiv.innerText = 'Error predicting image.';
+            }
         });
-
-        const result = await response.json();
-        resultDiv.innerHTML = `<p>Prediction: ${result.prediction}</p>`
-    } catch (error) {
-        console.error('Error:', error);
-        resultDiv.innerHTML = '<p>Error occurred. Please try again.</p>';
+    } else {
+        resultDiv.innerText = 'Please select an image.';
     }
 }
