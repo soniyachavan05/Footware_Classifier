@@ -24,6 +24,7 @@ function predict() {
                 }
             },
 
+
             error: function() {
                 resultDiv.innerText = 'Error predicting image.';
             }
