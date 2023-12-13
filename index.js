@@ -11,6 +11,8 @@ async function classifyImage() {
     const formData = new FormData();
     formData.append('file', file);
 
+    let session = await ort.InferenceSession.create('model.onnx');
+
     try {
         const response = await fetch('<https://soniyachavan05.github.io/Footware_Classifier/>', {
             method: 'POST',
