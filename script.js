@@ -10,8 +10,8 @@ function predict() {
         const url = 'http://127.0.0.1:5000/predict';
 
         $.ajax({
-            type: 'POST',
-            url: url,
+            type: 'POST',  // Use POST instead of GET
+            url: 'http://127.0.0.1:5000/predict',
             data: formData,
             contentType: false,
             processData: false,
@@ -23,7 +23,6 @@ function predict() {
                     resultDiv.innerText = 'Prediction not available';
                 }
             },
-
 
             error: function() {
                 resultDiv.innerText = 'Error predicting image.';
